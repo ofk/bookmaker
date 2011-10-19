@@ -1,0 +1,79 @@
+//------------------------------------------------------------------------------
+// bm-common-reset.scss
+// Author: ofk
+// Version: 2011-10-20
+//------------------------------------------------------------------------------
+
+@import 'bm-common-std';
+
+
+//------------------------------------------------------------------------------
+
+// 全要素に対して適用して良いリセット
+@mixin bm-reset-all {
+	@include bm-reset-margin;
+	@include bm-reset-font;
+	@include bm-reset-quotes;
+}
+
+// インタラクティブ要素以外に適用して良いリセット
+@mixin bm-reset-without-interactive {
+	@include bm-reset-padding;
+	@include bm-reset-vertical-align;
+	@include bm-reset-background-image;
+	border-color: inherit;
+}
+
+// インタラクティブ要素とテーブル要素以外に適用して良いリセット
+@mixin bm-reset-without-interactive-and-table {
+	@include bm-reset-border;
+}
+
+
+//------------------------------------------------------------------------------
+
+@mixin bm-reset-margin {
+	// marginが0である要素は、IEではautoである。
+	// また、0が指定されている方が、使い勝手が良いため。
+	margin: 0;
+}
+
+@mixin bm-reset-padding {
+	// 古いOperaでmarginの代わりにpaddingを設定している場合がある。
+	// 指定するとフォームが読みにくくなる。
+	padding: 0;
+}
+
+@mixin bm-reset-border {
+	// borderが0 noneである要素は、IEではmedium noneである。
+	// 指定するとフォームのデザインが破壊される。
+	border: 0 none;
+}
+
+@mixin bm-reset-font {
+	// fontの継承をリセットする。
+	font: inherit;
+	// IEのtableタグでフォントサイズが継承されない。
+	font-size: 100%;
+}
+
+@mixin bm-reset-quotes {
+	// Firefoxでは"“" "”" "‘" "’"である。IE8ではautoである。
+	quotes: none;
+}
+
+@mixin bm-reset-vertical-align {
+	// vertical-alignがbaselineである要素は、IEではautoである。
+	// 指定するとinputの縦位置がおかしくなる。
+	vertical-align: baseline;
+}
+
+@mixin bm-reset-background-image {
+	// 背景画像の置き換えを多用するため。
+	background-image: none;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+
+//------------------------------------------------------------------------------

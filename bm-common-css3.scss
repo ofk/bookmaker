@@ -1,0 +1,349 @@
+//------------------------------------------------------------------------------
+// bm-common-css3.scss
+// Author: ofk
+// Version: 2011-10-20
+//------------------------------------------------------------------------------
+
+@import 'bm-common-std';
+
+
+//------------------------------------------------------------------------------
+// background-clip(border-box OR padding-box OR content-box);
+$background-clip-default: border-box !default;
+@mixin background-clip($value: $background-clip-default) {
+	@if type-of($value) == string { $value: unquote($value); }
+	$value-alt: $value;
+	@if      $value == border-box  { $value-alt: border; }
+	@else if $value == padding-box { $value-alt: padding; }
+	@include bm-x-prop(
+		background-clip, $value-alt,
+		-moz, -webkit, not -o, not -ms, not official
+	);
+	@include bm-x-prop(
+		background-clip, $value,
+		not -moz, not -webkit, not -o, not -ms, official
+	);
+}
+
+
+//------------------------------------------------------------------------------
+// background-origin(border-box OR padding-box OR content-box);
+$background-origin-default: border-box !default;
+@mixin background-origin($value: $background-origin-default) {
+	@if type-of($value) == string { $value: unquote($value); }
+	$value-alt: $value;
+	@if      $value == border-box  { $value-alt: border; }
+	@else if $value == padding-box { $value-alt: padding; }
+	@else if $value == content-box { $value-alt: content; }
+	@include bm-x-prop(
+		background-origin, $value-alt,
+		-moz, -webkit, not -o, not -ms, not official
+	);
+	@include bm-x-prop(
+		background-origin, $value,
+		not -moz, not -webkit, not -o, not -ms, official
+	);
+}
+
+
+//------------------------------------------------------------------------------
+// background-size(auto);
+$background-size-default: auto !default;
+@mixin background-size($value: $background-size-default) {
+	@if type-of($value) == string { $value: unquote($value); }
+	@include bm-x-prop(
+		background-size, $value,
+		-moz, -webkit, -o, not -ms, official
+	);
+}
+
+
+//------------------------------------------------------------------------------
+// border-radius(3px 4px);
+// border-top-left-radius(1px);
+// border-top-right-radius(2px);
+// border-bottom-left-radius(3px);
+// border-bottom-right-radius(4px);
+$border-radius-default: 0 !default;
+@mixin border-radius($value: $border-radius-default) {
+	@if type-of($value) == string { $value: unquote($value); }
+	@include bm-x-prop(
+		border-radius, $value,
+		-moz, -webkit, not -o, not -ms, official
+	);
+}
+@mixin -border-corner-radius($value, $corner-top-bottom, $corner-left-right) {
+	@if type-of($value) == string { $value: unquote($value); }
+	$prop: "border-radius-#{$corner-top-bottom}#{$corner-left-right}";
+	@include bm-x-prop(
+		$prop, $value,
+		-moz, not -webkit, not -o, not -ms, not official
+	);
+	$prop: "border-#{$corner-top-bottom}-#{$corner-left-right}-radius";
+	@include bm-x-prop(
+		$prop, $value,
+		not -moz, -webkit, not -o, not -ms, official
+	);
+}
+@mixin border-top-left-radius($value: $border-radius-default) {
+	@include -border-corner-radius($value, top, left);
+}
+@mixin border-top-right-radius($value: $border-radius-default) {
+	@include -border-corner-radius($value, top, right);
+}
+@mixin border-bottom-left-radius($value: $border-radius-default) {
+	@include -border-corner-radius($value, bottom, left);
+}
+@mixin border-bottom-right-radius($value: $border-radius-default) {
+	@include -border-corner-radius($value, bottom, right);
+}
+
+
+//------------------------------------------------------------------------------
+// border-image
+// border-image-source
+// border-image-slice
+// border-image-width
+// border-image-outset
+// border-image-repeat
+
+// Not implement yet.
+
+
+//------------------------------------------------------------------------------
+// box-decoration-break
+
+// Not implement yet.
+
+
+//------------------------------------------------------------------------------
+// box-shadow(0 4px 8px rgba(0, 0, 0, .25));
+$box-shadow-default: none !default;
+@mixin box-shadow($value: $box-shadow-default) {
+	@if type-of($value) == string { $value: unquote($value); }
+	@include bm-x-prop(
+		box-shadow, $value,
+		-moz, -webkit, not -o, not -ms, official
+	);
+}
+
+
+//------------------------------------------------------------------------------
+// transform(rotate(45deg));
+// transform-origin(0 bottom);
+// transform-style: Not implement yet.
+$transform-default: none !default;
+@mixin transform($value: $transform-default) {
+	@if type-of($value) == string { $value: unquote($value); }
+	@include bm-x-prop(
+		transform, $value,
+		-moz, -webkit, -o, not -ms, official
+	);
+}
+
+$transform-origin-default: 50% 50% !default;
+@mixin transform-origin($value: $transform-origin-default) {
+	@if type-of($value) == string { $value: unquote($value); }
+	@include bm-x-prop(
+		transform-origin, $value,
+		-moz, -webkit, -o, not -ms, official
+	);
+}
+
+
+//------------------------------------------------------------------------------
+// transition
+// transition-property
+// transition-duration
+// transition-timing-function
+// transition-delay
+
+// Not implement yet.
+
+
+//------------------------------------------------------------------------------
+// opacity(0.8);
+$opacity-default: 1 !default;
+@mixin opacity($value: $opacity-default) {
+	@if type-of($value) == string { $value: unquote($value); }
+	$value-alt: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($value * 100)})";
+	-ms-filter: $value-alt;
+	filter: unquote($value-alt);
+	opacity: $value;
+}
+
+
+//------------------------------------------------------------------------------
+// linear-gradient(left, (#ff0000, rgba(255,0,0,0)))
+// radial-gradient
+
+// box-orient
+// box-direction
+// box-ordinal-group
+// box-align
+
+// box-flex
+// box-flex-group
+
+// box-pack
+// box-lines
+
+// columns
+// column-width
+// column-count
+
+// column-gap
+// column-rule
+// column-rule-color
+// column-rule-style
+// column-rule-width
+
+// break-after
+// break-before
+// break-inside
+
+// column-span
+// column-fill
+
+// appearance
+// icon
+
+
+//------------------------------------------------------------------------------
+// box-sizing(content-box OR border-box);
+$box-sizing-default: content-box !default;
+@mixin box-sizing($value: $box-sizing-default) {
+	@if type-of($value) == string { $value: unquote($value); }
+	@include bm-x-prop(
+		box-sizing, $value,
+		-moz, -webkit, not -o, not -ms, official
+	);
+}
+
+
+//------------------------------------------------------------------------------
+// outline-offset
+// resize
+
+// nav-index
+// nav-up
+// nav-right
+// nav-down
+// nav-left
+
+// white-space-collapse
+// word-break
+// text-wrap
+// word-wrap
+// text-align-last
+// text-justify
+// punctuation-trim
+// text-emphasis
+// text-shadow
+// text-outline
+// hanging-punctuation
+
+// ruby-position
+// ruby-align
+// ruby-overhang
+// ruby-span
+
+// font-size-adjust
+// font-stretch
+
+// grid-columns
+// grid-rows
+
+// overflow-x
+// overflow-y
+// overflow-style
+
+// rotation
+// rotation-point
+
+// text-height
+
+// line-stacking
+// line-stacking-strategy
+// line-stacking-ruby
+// line-stacking-shift
+
+// dominant-baseline
+// alignment-baseline
+// alignment-adjust
+// baseline-shift
+
+// inline-box-align
+
+// drop-initial-value
+// drop-initial-size
+// drop-initial-after-align
+// drop-initial-after-adjust
+// drop-initial-before-align
+// drop-initial-before-adjust
+
+// marquee-play-count
+// marquee-loop
+// marquee-direction
+// marquee-speed
+// marquee-style
+// overflow-style
+
+// target
+// target-name
+// target-new
+// target-position
+
+// move-to
+// page-policy
+// crop
+
+// size
+// page
+
+// image-orientation
+// fit
+// fit-position
+
+// string-set
+// border-length
+
+// hyphens
+// hyphenate-resource
+// hyphenate-before
+// hyphenate-after
+// hyphenate-lines
+// hyphenate-character
+
+// text-replace
+// image-resolution
+// float-offset
+// marks
+
+// bookmark-level
+// bookmark-label
+// bookmark-target
+// voice-volume
+// voice-balance
+
+// rest
+// rest-before
+// rest-after
+
+// mark
+// mark-before
+// mark-after
+
+// voice-rate
+// voice-pitch
+// voice-pitch-range
+// voice-stress
+// voice-duration
+// phonemes
+
+// presentation-level
+
+// binding
+
+
+//------------------------------------------------------------------------------

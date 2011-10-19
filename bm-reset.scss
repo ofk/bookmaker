@@ -1,0 +1,480 @@
+/*------------------------------------------------------------------------------
+ * bm-reset.css
+ *
+ * Author: ofk
+ * Version: 2011-10-20
+ *----------------------------------------------------------------------------*/
+
+@import 'bm-common';
+
+
+//------------------------------------------------------------------------------
+//= All Reset
+//------------------------------------------------------------------------------
+
+#{bm-selectors(
+	html body
+	bm-html5(section nav article aside)
+	h1 h2 h3 h4 h5 h6
+	bm-html5(hgroup header footer)
+	address p hr pre blockquote
+	ol ul dl dt dd
+	bm-html5(figure figcaption)
+	div
+	a em strong small s cite q dfn abbr
+	bm-html5(time)
+	code var samp kbd sub sup
+	bm-html5(mark ruby rt rp)
+	span ins del img
+	iframe embed object
+	video canvas
+	caption tbody thead tfoot tr
+	form fieldset legend label
+	bm-html5(details summary command menu)
+)} {
+	@include bm-reset-all;
+	@include bm-reset-without-interactive;
+	@include bm-reset-without-interactive-and-table;
+}
+
+#{bm-selectors(
+	table td th
+	input button select
+	bm-html5(datalist)
+	optgroup option textarea
+	bm-html5(keygen output progress meter)
+)} {
+	@include bm-reset-all;
+}
+
+table, td, th {
+	@include bm-reset-without-interactive;
+}
+
+
+//------------------------------------------------------------------------------
+//= The root element
+//------------------------------------------------------------------------------
+
+html {
+	// display: block; // IE: inline?;
+}
+
+
+//------------------------------------------------------------------------------
+//= Document metadata
+//------------------------------------------------------------------------------
+
+// 初期値で問題ないため、指定せず
+head {}
+title {}
+base {}
+link {}
+meta {}
+style {}
+
+
+//------------------------------------------------------------------------------
+//= Scripting
+//------------------------------------------------------------------------------
+
+// 初期値で問題ないため、指定せず
+script {}
+noscript {}
+
+
+//------------------------------------------------------------------------------
+//= Sections
+//------------------------------------------------------------------------------
+
+body {
+	// margin: 0;
+	font: #{$base-font-size-px}px/#{$base-line-height} sans-serif;
+	// IE hack
+	*font-size: small;
+	*font: x-small;
+}
+
+@if $support-for-html5 {
+	  section, nav, article, aside
+	, hgroup, header, footer
+	, figure, figcaption {
+		display: block; // IE: inline;
+	}
+}
+
+#{$headers} {
+	// margin: 0;
+	// font-sizeを初期化した方が利用しやすい。
+	// font-size: 100%;
+}
+
+address {
+	// margin: 0;
+	// font-style: inherit;
+}
+
+
+//------------------------------------------------------------------------------
+//= Grouping content
+//------------------------------------------------------------------------------
+
+p {
+	// margin: 0;
+}
+
+hr {}
+
+pre {
+	// margin: 0;
+	// font-family: monospace, sans-serif;
+}
+
+blockquote {
+	// margin: 0;
+}
+
+ol {
+	// margin: 0;
+	// padding: 0;
+	list-style-type: decimal;
+	ol {
+		list-style-type: lower-roman;
+		ol {
+			list-style-type: lower-greek;
+		}
+	}
+}
+
+ul {
+	// margin: 0;
+	// padding: 0;
+	list-style-type: circle;
+	ul {
+		list-style-type: disc;
+		ul {
+			list-style-type: square;
+		}
+	}
+}
+
+li {
+	list-style-type: inherit;
+}
+
+dl {
+	// margin: 0;
+}
+
+dt {
+	// margin: 0;
+}
+
+dd {
+	// margin: 0;
+}
+
+div {}
+
+
+//------------------------------------------------------------------------------
+//= Text-level semantics
+//------------------------------------------------------------------------------
+
+a {}
+
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: bolder; // IE: bold;
+}
+
+small {
+	// font-size: smaller;
+}
+
+s {}
+
+cite {
+	// font-style: inherit;
+}
+
+q {
+	// font-style: inherit;
+}
+
+dfn {}
+
+abbr {}
+
+@if $support-for-html5 {
+	time {}
+}
+
+code {
+	// font-family: monospace, sans-serif;
+}
+
+var {
+	// font-family: monospace, sans-serif;
+}
+
+samp {
+	// font-family: monospace, sans-serif;
+}
+
+kbd {
+	// font-family: monospace, sans-serif;
+}
+
+sub {
+	vertical-align: sub;
+	// font-size: smaller;
+}
+
+sup {
+	vertical-align: super;
+	// font-size: smaller;
+}
+
+//i {
+//	// font-style: italic;
+//}
+
+//b {
+//	// font-weight: bolder; // IE: bold;
+//}
+
+@if $support-for-html5 {
+	mark {}
+}
+
+@if $support-for-html5 {
+	ruby {}
+}
+
+@if $support-for-html5 {
+	rt {}
+}
+
+@if $support-for-html5 {
+	rp {}
+}
+
+// bdi {}
+
+// bdo {}
+
+span {}
+
+// br {}
+
+// wbr {}
+
+pre, code, var, samp, kbd {
+	font-family: monospace, sans-serif;
+}
+
+small, sub, sup {
+	font-size: smaller;
+}
+
+
+//------------------------------------------------------------------------------
+//= Edits
+//------------------------------------------------------------------------------
+
+ins {
+	text-decoration: none;
+}
+
+del {}
+
+
+//------------------------------------------------------------------------------
+//= Embedded content
+//------------------------------------------------------------------------------
+
+img {}
+
+iframe {}
+
+embed {}
+
+object {}
+
+// param {}
+
+video {}
+
+@if $support-for-html5 {
+	// audio {}
+}
+
+@if $support-for-html5 {
+	// source {}
+}
+
+@if $support-for-html5 {
+	// track {}
+}
+
+canvas {}
+
+// map {}
+
+// area {}
+
+
+//------------------------------------------------------------------------------
+//= Tabular data
+//------------------------------------------------------------------------------
+
+table {
+	// margin: 0;
+	// borderを消した方が利用しやすいため
+	// border: 0 none;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+caption {}
+
+// colgroup {}
+
+// col {}
+
+tbody, thead, tfoot {
+	// border: 0 none;
+	vertical-align: middle;
+}
+
+tr {
+	// vertical-align: inherit;
+}
+
+td {
+	// padding: 0;
+	// vertical-align: inherit;
+}
+
+th {
+	// padding: 0;
+	// vertical-align: inherit;
+}
+
+tr, td, th {
+	vertical-align: inherit;
+}
+
+
+//------------------------------------------------------------------------------
+//= Forms
+//------------------------------------------------------------------------------
+
+form {
+	// margin: 0;
+}
+
+fieldset {
+	// margin: 0;
+}
+
+legend {
+	// margin: 0;
+	color: inherit;
+}
+
+label {}
+
+input {
+	// font-size: 99%;
+	line-height: 1; // NN7
+}
+
+button {
+	// font-size: 99%;
+	// http://www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
+	width: auto;
+	overflow: visible;
+}
+
+#{$buttons} {
+	&::-moz-focus-inner {
+		padding: 0;
+		border: 0 none;
+	}
+}
+
+select {
+	// font-size: 99%;
+}
+
+@if $support-for-html5 {
+	datalist {}
+}
+
+optgroup {}
+
+option {}
+
+textarea {
+	// font-size: 99%;
+}
+
+@if $support-for-html5 {
+	keygen {}
+}
+
+@if $support-for-html5 {
+	output {}
+}
+
+@if $support-for-html5 {
+	progress {}
+}
+
+@if $support-for-html5 {
+	meter {}
+}
+
+input, button, select, textarea {
+	font-size: 99%;
+}
+
+
+//------------------------------------------------------------------------------
+//= Interactive elements
+//------------------------------------------------------------------------------
+
+@if $support-for-html5 {
+	details {}
+}
+
+@if $support-for-html5 {
+	summary {}
+}
+
+@if $support-for-html5 {
+	command {}
+}
+
+@if $support-for-html5 {
+	menu {}
+}
+
+
+//------------------------------------------------------------------------------
+//= Extend elements
+//------------------------------------------------------------------------------
+
+i { @extend em; }
+b { @extend strong; }
+@if $support-for-legacy {
+	acronym { @extend abbr; }
+}
+
+
+//------------------------------------------------------------------------------

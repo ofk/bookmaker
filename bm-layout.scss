@@ -1,0 +1,190 @@
+/*------------------------------------------------------------------------------
+ * bm-layout.css
+ *
+ * Author: ofk
+ * Version: 2011-10-20
+ *----------------------------------------------------------------------------*/
+
+@import 'bm-common';
+
+
+//------------------------------------------------------------------------------
+//= Set margin
+//------------------------------------------------------------------------------
+
+#{bm-selectors(
+	$headers
+	p pre ol ul dl table fieldset
+)} {
+	margin: 1em 0;
+}
+
+#{bm-selectors(
+	blockquote
+	bm-html5(figure)
+)} {
+	margin: 1em;
+}
+
+
+//------------------------------------------------------------------------------
+//= Sections
+//------------------------------------------------------------------------------
+
+h1 { font-size: bm-size(22); }
+h2 { font-size: bm-size(20); }
+h3 { font-size: bm-size(18); }
+h4 { font-size: bm-size(16); }
+h5 { font-size: bm-size(15); }
+h6 { font-size: bm-size(14); }
+
+#{$headers} {
+	font-weight: bolder;
+}
+
+
+//------------------------------------------------------------------------------
+//= Grouping content
+//------------------------------------------------------------------------------
+
+hr {
+	color: inherit;
+	display: none; // 表示されてもよいことはあまり無いため。
+}
+
+pre {
+	*width: 100%;
+	overflow: auto;
+	*overflow-y: hidden;
+	word-wrap: break-word; // IE5.5+
+	word-break: break-all; // IE5+
+	white-space: pre-wrap;
+}
+
+blockquote {
+	// margin: 1em;
+	address {
+		text-align: right;
+		&:before {
+			content: "\2015";
+		}
+	}
+}
+
+ol, ul, dl {
+	ol, ul, dl {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
+ol, ul {
+	margin-left: 2em;
+}
+
+dl dd {
+	margin-left: 1em;
+}
+
+@if $support-for-html5 {
+	figure {
+		// margin: 1em;
+	}
+}
+
+@if $support-for-html5 {
+	figcaption {
+		font-size: bm-size(11);
+	}
+}
+
+
+//------------------------------------------------------------------------------
+//= Text-level semantics
+//------------------------------------------------------------------------------
+
+big {
+	font-size: larger;
+}
+
+abbr {
+	letter-spacing: .1em;
+	font-variant: small-caps;
+}
+
+abbr, dfn {
+	&[title] {
+		border-bottom: 1px dotted;
+		cursor: help;
+		:link &, label & {
+			cursor: inherit;
+		}
+	}
+}
+
+
+//------------------------------------------------------------------------------
+//= Edits
+//------------------------------------------------------------------------------
+
+ins {
+	border-bottom: 1px dotted;
+}
+
+
+//------------------------------------------------------------------------------
+//= Embedded content
+//------------------------------------------------------------------------------
+
+#{bm-selectors(
+	img iframe embed object
+	video canvas
+)} {
+	vertical-align: text-bottom;
+	outline: 0 none;
+}
+
+img {
+	-ms-interpolation-mode: bicubic;
+}
+
+
+//------------------------------------------------------------------------------
+//= Tabular data
+//------------------------------------------------------------------------------
+
+th {
+	font-weight: bolder;
+}
+
+@mixin bm-layout-table {
+	&, th, td {
+		border-style: solid;
+	}
+	th, td {
+		padding: .2em .5em;
+	}
+}
+
+table[border] {
+	@include bm-layout-table;
+}
+
+// IE6
+* html table {
+	@include bm-layout-table;
+}
+
+
+//------------------------------------------------------------------------------
+//= Extend elements
+//------------------------------------------------------------------------------
+
+i { @extend em; }
+b { @extend strong; }
+@if $support-for-legacy {
+	acronym { @extend abbr; }
+}
+
+
+//------------------------------------------------------------------------------

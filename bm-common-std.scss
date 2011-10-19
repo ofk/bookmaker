@@ -1,0 +1,100 @@
+//------------------------------------------------------------------------------
+// bm-common-css3.scss
+// Author: ofk
+// Version: 2011-10-20
+//------------------------------------------------------------------------------
+
+@import 'bm-config';
+
+
+//------------------------------------------------------------------------------
+
+// セレクター文字列をカンマで結合する
+@function bm-selectors($selectors: (), $flag: true) {
+	$res: '';
+	@if $flag {
+		@each $selector in $selectors {
+			@if $selector {
+				@if $res != '' {
+					$res: $res + ', ';
+				}
+				$res: $res + $selector;
+			}
+		}
+	}
+	@return $res;
+}
+
+// 設定に応じて HTML5 ノードを許可する
+@function bm-html5($node) {
+	@return bm-selectors($node, $support-for-html5);
+}
+
+// 設定に応じて レガシーノードを許可する
+@function bm-legacy($node) {
+	@return bm-selectors($node, $support-for-legacy);
+}
+
+// ヘッダーノードの集合
+$headers: bm-selectors(h1 h2 h3 h4 h5 h6);
+// ボタンノードの集合
+$buttons: bm-selectors('input[type="submit"]' 'input[type="button"]' button);
+// テキスト入力の集合
+$inputs: bm-selectors('input[type="text"]' 'input[type="password"]' textarea);
+// input:not([type='checkbox']):not([type='radio']):not([type='file'])
+//      :not([type='submit']):not([type='image']):not([type='reset'])
+//      :not([type='button'])
+
+//------------------------------------------------------------------------------
+
+// ベンダー拡張プロパティー
+@mixin bm-x-prop(
+	$property,
+	$value,
+	$moz:      false,
+	$webkit:   false,
+	$o:        false,
+	$ms:       false,
+	//$khtml:    false,
+	$official: true
+) {
+	@if $moz    and $support-for-moz    {    -moz-#{$property}: $value; }
+	@if $webkit and $support-for-webkit { -webkit-#{$property}: $value; }
+	@if $o      and $support-for-o      {      -o-#{$property}: $value; }
+	@if $ms     and $support-for-ms     {     -ms-#{$property}: $value; }
+	//@if $khtml  and $support-for-khtml  {  -khtml-#{$property}: $value; }
+	@if $official                       {         #{$property}: $value; }
+}
+
+// ベンダー拡張バリュー
+@mixin bm-x-value(
+	$property,
+	$value,
+	$moz:      false,
+	$webkit:   false,
+	$o:        false,
+	$ms:       false,
+	//$khtml:    false,
+	$official: true
+) {
+	@if $moz    and $support-for-moz    { #{$property}:    -moz-#{$value}; }
+	@if $webkit and $support-for-webkit { #{$property}: -webkit-#{$value}; }
+	@if $o      and $support-for-o      { #{$property}:      -o-#{$value}; }
+	@if $ms     and $support-for-ms     { #{$property}:     -ms-#{$value}; }
+	//@if $khtml  and $support-for-khtml  { #{$property}:  -khtml-#{$value}; }
+	@if $official                       { #{$property}:              $value; }
+}
+
+//------------------------------------------------------------------------------
+
+// YUI font size
+@function bm-size($size, $basesize: $base-font-size-px) {
+	@if $basesize == 13 and 10 <= $size and $size <= 26 {
+		$sizes: ( 77%,    85%,    93%,   100%,
+		         108%,   116%,   123.1%, 131%,
+		         138.5%, 146.5%, 153.9%, 161.6%,
+		         167%,   174%,   182%,   189%,   197%);
+		@return nth($sizes, $size - 9);
+	}
+	@return percentage($size / $basesize);
+}

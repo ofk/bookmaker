@@ -1,0 +1,23 @@
+/*------------------------------------------------------------------------------
+ * bookmaker.css
+ *
+ * Author: ofk
+ * Version: 2011-10-20
+ * Reference:
+ * - http://www.w3.org/TR/html5/spec.html
+ * - http://kojika17.com/2011/03/browsers-default-css.php
+ * - http://developer.yahoo.com/yui/fonts/
+ *------------------------------------------------------------------------------
+ * Yahoo UI Library Font-size Adjustment
+ * Copyright (c) 2006, Yahoo! Inc. All rights reserved.
+ * http://developer.yahoo.com/yui/license.txt
+ * http://developer.yahoo.com/yui/fonts/
+ * 10px = 77%     11px = 85%     12px = 93%     13px = 100%
+ * 14px = 108%    15px = 116%    16px = 123.1%  17px = 131%
+ * 18px = 138.5%  19px = 146.5%  20px = 153.9%  21px = 161.6%
+ * 22px = 167%    23px = 174%    24px = 182%    25px = 189%
+ * 26px = 197%
+ *----------------------------------------------------------------------------*/
+
+@import 'bm-base.css';
+@import 'bm-design.css';

@@ -1,0 +1,70 @@
+//------------------------------------------------------------------------------
+// bm-common-markup.scss
+// Author: ofk
+// Version: 2011-10-20
+//------------------------------------------------------------------------------
+
+@import 'bm-common-std';
+
+
+//------------------------------------------------------------------------------
+// clearfix
+@mixin bm-cfx {
+	&:before, &:after {
+		content: '';
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+	*zoom: 1;
+}
+
+
+//------------------------------------------------------------------------------
+// fir
+
+//.fir {
+//	display: inline-block;
+//	overflow: hidden;
+//	background-repeat: no-repeat;
+//	background-position: left top;
+//	text-indent: -9999px;
+//	text-align: left;
+//	direction: ltr;
+//}
+
+
+//------------------------------------------------------------------------------
+
+// sjisart
+//@mixin bm-sjisart($font-size: 16px) {
+//	font-family: 'MS PGothic', 'ＭＳ Ｐゴシック';
+//	font-size: $font-size;
+//	line-height: 1.125;
+//}
+
+//@mixin user-select-none {
+//	outline: none;
+//	@include user-select(none);
+//}
+
+//@mixin disable {
+//	cursor: default !important;
+//}
+
+//@mixin centering {
+//	display: -webkit-box;
+//	display: -moz-box;
+//	display: box;
+//	@include box-align(center);
+//	@include box-pack(center);
+//}
+
+//@mixin fullscreen {
+//	margin: 0;
+//	padding: 0;
+//	width: 100%;
+//	height: 100%;
+//	overflow: hidden;
+//}
