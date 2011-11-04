@@ -31,12 +31,13 @@
 //= Sections
 //------------------------------------------------------------------------------
 
-h1 { font-size: bm-size(22); }
-h2 { font-size: bm-size(20); }
-h3 { font-size: bm-size(18); }
-h4 { font-size: bm-size(16); }
-h5 { font-size: bm-size(15); }
-h6 { font-size: bm-size(14); }
+// フィボナッチ的な増加。
+h1 { font-size: bm-size($base-font-size-px + 13); }
+h2 { font-size: bm-size($base-font-size-px + 8); }
+h3 { font-size: bm-size($base-font-size-px + 5); }
+h4 { font-size: bm-size($base-font-size-px + 3); }
+h5 { font-size: bm-size($base-font-size-px + 2); }
+h6 { font-size: bm-size($base-font-size-px + 1); }
 
 #{$headers} {
 	font-weight: bolder;
@@ -94,7 +95,7 @@ dl dd {
 
 @if $support-for-html5 {
 	figcaption {
-		font-size: bm-size(11);
+		font-size: smaller;
 	}
 }
 
@@ -158,9 +159,6 @@ th {
 }
 
 @mixin bm-layout-table {
-	&, th, td {
-		border-style: solid;
-	}
 	th, td {
 		padding: .2em .5em;
 	}
@@ -170,8 +168,8 @@ table[border] {
 	@include bm-layout-table;
 }
 
-// IE6
 * html table {
+	// IE6
 	@include bm-layout-table;
 }
 

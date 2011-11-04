@@ -38,7 +38,7 @@
 // ヘッダーノードの集合
 $headers: bm-selectors(h1 h2 h3 h4 h5 h6);
 // ボタンノードの集合
-$buttons: bm-selectors('input[type="submit"]' 'input[type="button"]' button);
+$buttons: bm-selectors('input[type="submit"]' 'input[type="button"]' 'input[type="reset"]' button);
 // テキスト入力の集合
 $inputs: bm-selectors('input[type="text"]' 'input[type="password"]' textarea);
 // input:not([type='checkbox']):not([type='radio']):not([type='file'])

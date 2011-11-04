@@ -14,13 +14,14 @@
 	@include bm-reset-margin;
 	@include bm-reset-font;
 	@include bm-reset-quotes;
+	@include bm-reset-vertical-align;
 }
 
 // インタラクティブ要素以外に適用して良いリセット
 @mixin bm-reset-without-interactive {
 	@include bm-reset-padding;
-	@include bm-reset-vertical-align;
 	@include bm-reset-background-image;
+	// IEでtableに効いている様子が無い……。
 	border-color: inherit;
 }
 
@@ -34,7 +35,7 @@
 
 @mixin bm-reset-margin {
 	// marginが0である要素は、IEではautoである。
-	// また、0が指定されている方が、使い勝手が良いため。
+	// 0を指定した方が、使い勝手が良いため。
 	margin: 0;
 }
 
@@ -53,7 +54,7 @@
 @mixin bm-reset-font {
 	// fontの継承をリセットする。
 	font: inherit;
-	// IEのtableタグでフォントサイズが継承されない。
+	// IEでtableはfont-sizeが継承されない。
 	font-size: 100%;
 }
 
@@ -64,14 +65,13 @@
 
 @mixin bm-reset-vertical-align {
 	// vertical-alignがbaselineである要素は、IEではautoである。
-	// 指定するとinputの縦位置がおかしくなる。
 	vertical-align: baseline;
 }
 
 @mixin bm-reset-background-image {
-	// 背景画像の置き換えを多用するため。
+	// 一応、リセット。
 	background-image: none;
-	background-repeat: no-repeat;
+	background-repeat: repeat;
 	background-position: 0 0;
 }
 

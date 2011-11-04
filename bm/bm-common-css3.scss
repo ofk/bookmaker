@@ -166,14 +166,52 @@ $transform-origin-default: 50% 50% !default;
 $opacity-default: 1 !default;
 @mixin opacity($value: $opacity-default) {
 	@if type-of($value) == string { $value: unquote($value); }
-	$value-alt: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($value * 100)})";
-	-ms-filter: $value-alt;
-	filter: unquote($value-alt);
+	@include ms-filter('progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($value * 100)})');
 	opacity: $value;
 }
 
 
 //------------------------------------------------------------------------------
+// simple-linear-gradient
+@mixin simple-linear-gradient($dir, $start-color, $finish-color, $start-color-alt: false, $finish-color-alt: false) {
+	@if type-of($dir) == string { $dir: unquote($dir); }
+	@if type-of($start-color) == string { $start-color: unquote($start-color); }
+	@if type-of($finish-color) == string { $finish-color: unquote($finish-color); }
+
+	$dir-start-x: left;
+	$dir-start-y: top;
+	$dir-finish-x: left;
+	$dir-finish-y: top;
+	@if      $dir == top { $dir-finish-y: bottom; }
+	@else if $dir == bottom { $dir-top-y: bottom; }
+	@else if $dir == left { $dir-finish-x: right; }
+	@else if $dir == right { $dir-top-x: right; }
+
+	background-image: -moz-linear-gradient($dir, $start-color, $finish-color);
+	background-image: -webkit-gradient(
+		linear, $dir-start-x $dir-start-y, $dir-finish-x $dir-finish-y, color-stop(0, $start-color), color-stop(1, $finish-color)
+	);
+	background-image: -webkit-linear-gradient($dir, $start-color, $finish-color);
+	background-image: linear-gradient($dir, $start-color, $finish-color);
+	@if $start-color-alt == false {
+		$start-color-alt: rgb(red($start-color), green($start-color), blue($start-color));
+	}
+	@if $finish-color-alt == false {
+		$finish-color-alt: rgb(red($finish-color), green($finish-color), blue($finish-color));
+	}
+	@include ms-filter('progid:DXImageTransform.Microsoft.Gradient(StartColorStr="#{$start-color-alt}", EndColorStr="#{$finish-color-alt}")');
+}
+
+// top-linear-gradient
+@mixin top-linear-gradient($start-color, $finish-color, $start-color-alt: false, $finish-color-alt: false) {
+	@include simple-linear-gradient(top, $start-color, $finish-color, $start-color-alt, $finish-color-alt);
+}
+
+// left-linear-gradient
+@mixin left-linear-gradient($start-color, $finish-color, $start-color-alt: false, $finish-color-alt: false) {
+	@include simple-linear-gradient(left, $start-color, $finish-color, $start-color-alt, $finish-color-alt);
+}
+
 // linear-gradient(left, (#ff0000, rgba(255,0,0,0)))
 // radial-gradient
 
@@ -345,5 +383,14 @@ $box-sizing-default: content-box !default;
 
 // binding
 
+
+//------------------------------------------------------------------------------
+// ms-filter
+$ms-filter-default: none !default;
+@mixin ms-filter($value: $ms-filter-default) {
+	@if type-of($value) == string { $value: unquote($value); }
+	-ms-filter: quote($value);
+	filter: $value;
+}
 
 //------------------------------------------------------------------------------
