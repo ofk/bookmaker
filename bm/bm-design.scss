@@ -117,7 +117,7 @@ input, button, select, textarea {
 
 #{$buttons} {
 	padding: .25em .6em;
-	border: 1px solid #ddd;
+	border: 1px solid #ccc;
 	@include border-radius(.25em);
 	@include top-linear-gradient(#ffffff, #e1e1e1, '#ffffff');
 	color: #666;
@@ -139,9 +139,9 @@ input, button, select, textarea {
 		@include ms-filter('progid:DXImageTransform.Microsoft.Gradient(StartColorStr="#ebebeb", EndColorStr="#ebebeb")');
 	}
 	&:disabled { &, &:hover {
-		border-color: #ddd;
-		@include top-linear-gradient(#ebebeb, #e1e1e1);
-		color: #999;
+		border-color: #ccc;
+		@include top-linear-gradient(#ffffff, #e1e1e1, '#ffffff');
+		color: #aaa;
 		cursor: auto;
 		@include box-shadow(none);
 	} }
