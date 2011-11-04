@@ -187,19 +187,18 @@ $opacity-default: 1 !default;
 	@else if $dir == left { $dir-finish-x: right; }
 	@else if $dir == right { $dir-top-x: right; }
 
-	background-image: -moz-linear-gradient($dir, $start-color, $finish-color);
-	background-image: -webkit-gradient(
-		linear, $dir-start-x $dir-start-y, $dir-finish-x $dir-finish-y, color-stop(0, $start-color), color-stop(1, $finish-color)
-	);
-	background-image: -webkit-linear-gradient($dir, $start-color, $finish-color);
-	background-image: linear-gradient($dir, $start-color, $finish-color);
+	background-image: -moz-linear-gradient($dir,$start-color,$finish-color);
+	background-image: -webkit-gradient(linear,$dir-start-x $dir-start-y,$dir-finish-x $dir-finish-y,color-stop(0,$start-color),color-stop(1,$finish-color));
+	background-image: -webkit-linear-gradient($dir,$start-color,$finish-color);
+	background-image: linear-gradient($dir,$start-color,$finish-color);
+
 	@if $start-color-alt == false {
 		$start-color-alt: rgb(red($start-color), green($start-color), blue($start-color));
 	}
 	@if $finish-color-alt == false {
 		$finish-color-alt: rgb(red($finish-color), green($finish-color), blue($finish-color));
 	}
-	@include ms-filter('progid:DXImageTransform.Microsoft.Gradient(StartColorStr="#{$start-color-alt}", EndColorStr="#{$finish-color-alt}")');
+	@include ms-filter('progid:DXImageTransform.Microsoft.Gradient(StartColorStr="#{$start-color-alt}",EndColorStr="#{$finish-color-alt}")');
 }
 
 // top-linear-gradient
