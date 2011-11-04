@@ -1,158 +1,592 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-<meta charset="utf-8" />
+<meta charset="UTF-8" />
 <title>CSS TEST 1</title>
-<link rel="stylesheet" type="text/css" href="bookmaker.css" media="all" />
+<link rel="stylesheet" href="bookmaker.css" media="all" />
+<style>
+.hchk {
+	background: #fc0;
+	border: 1px solid #0cf;
+}
+</style>
 </head>
 <body>
 
-<h1>大見出しです。h1要素が使われてます。</h1>
+<h1>h1 ヘッダー</h1>
+<h2>h2 ヘッダー</h2>
+<h3>h3 ヘッダー</h3>
+<h4>h4 ヘッダー</h4>
+<h5>h5 ヘッダー</h5>
+<h6>h6 ヘッダー</h6>
 
-<h2>中見出しです。h2要素が使われてます。</h2>
-
+<address>address タグです。</address>
+<p>p タグ、本文です。本文ですよ。</p>
 <p>
-このテキストはダミーテキストです。どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。<br />
-使用している要素は h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, a, q, blockquote, table, td, th, pre 辺り。
+	<a href="#">a tag</a>
+	<em>em tag</em>
+	<strong>strong tag</strong>
+	<small>small tag</small>
+	<s>s tag</s>
+	<cite>cite tag</cite>
+	<q>q tag</q>
+	<dfn>dfn tag</dfn>
+	<abbr>abbr tag</abbr>
+	<code>code tag</code>
+	<var>var tag</var>
+	<samp>samp tag</samp>
+	<kbd>kbd tag</kbd>
+	<sub>sub tag</sub>
+	<sup>sup tag</sup>
+	<span>span tag</span>
+	<ins>ins tag</ins>
+	<del>del tag</del>
 </p>
- 
+<ins><p>p タグ、本文です。本文ですよ。</p></ins>
+<del><p>p タグ、本文です。本文ですよ。</p></del>
+<p>p タグ、本文です。<img src="http://dummyimage.com/13x13" />本文ですよ。</p>
 <p>
-ブログのテストエントリーに使えたりするダミー記事です。<br />
-テキストに<a href="#hoge">リンクを張った</a>場合はこんな感じ。こっちは<a href="http://www.example.com/">外部リンク</a>です。
+	<img src="http://dummyimage.com/300x200" align="left" />
+	画像に本文が回りこむ、<br />回りこむ、<br />回りこむ、<br />回りこむ、<br />回りこむ！
+	<img src="http://dummyimage.com/100x200" align="right" />
+	画像に本文が回りこむ、<br />回りこむ、<br />回りこむ、<br />回りこむ、<br />回りこむ！
+	<br clear="all" />
 </p>
- 
-<h3>小見出しです。h3要素が使われてます。</h3>
- 
-<p>
-<img src="http://dummyimage.com/300x200" alt="A Dummy Image" class="imgR" />
-このテキストはダミーテキストです。どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。このテキストはダミーテキストです。どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。
-</p>
- 
-<h4>小見出しです。h4要素が使われてます。</h4>
- 
-<p>
-このテキストはダミーテキストです。<strong>強調表示 strong</strong>どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。<br />
-この部分は段落、つまり paragraph です。<em>強調表示 em</em>このテキストはダミーテキストです。
-</p>
- 
-<table>
-<tbody>
-<tr>
-<th>テーブルヘッダー</th>
-<td>テーブルのデータテーブルのデータテーブルのデータテーブルのデータ</td>
-</tr>
-<tr>
-<th>テーブルヘッダー</th>
-<td>テーブルのデータテーブルのデータ</td>
-</tr>
-</tbody>
-</table>
- 
-<p>
-このテキストはダミーテキストです。<strong>強調表示 strong</strong>どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。<br />
-この部分は段落、つまり paragraph です。<em>強調表示 em</em>このテキストはダミーテキストです。
-</p>
- 
-<table>
-<tbody>
-<tr>
-<th>テーブルヘッダー</th>
-<th>テーブルヘッダー</th>
-</tr>
-<tr>
-<td>テーブルのデータテーブルのデータ</td>
-<td>テーブルのデータテーブルのデータテーブルのデータ</td>
-</tr>
-</tbody>
-</table>
- 
-<p>
-このテキストはダミーテキストです。<strong>強調表示 strong</strong>どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。<br />
-この部分は段落、つまり paragraph です。<em>強調表示 em</em>このテキストはダミーテキストです。
-</p>
- 
-<dl>
-<dt>定義リストのタイトル</dt>
-<dd>内容ないようナイヨウ。内容ないようナイヨウ。内容ないようナイヨウ。内容ないようナイヨウ。内容ないようナイヨウ。</dd>
-<dt>定義リストのタイトル</dt>
-<dd>内容ないようナイヨウ。内容ないようナイヨウ。内容ないようナイヨウ。内容ないようナイヨウ。内容ないようナイヨウ。</dd>
-</dl>
- 
-<p>
-<img src="http://dummyimage.com/200x133" alt="A Dummy Image" class="imgL" />
-このテキストはダミーテキストです。どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。この部分は段落、つまり paragraph です。このテキストはダミーテキストです。どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。この部分は段落、つまり paragraph です。
-</p>
- 
-<ol>
-<li>順序が付いているリスト、つまり ol要素です。</li>
-<li>順序が付いているリストです。</li>
-<li>順序が付いているリストです。</li>
-<li>順序が付いているリストです。</li>
-</ol>
- 
-<p>
-このテキストはダミーテキストです。どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。この部分は段落、つまり paragraph です。テキストに<a href="#hoge">リンクを張った</a>場合はこんな感じ。こっちは<a href="http://www.example.com/">外部リンク</a>です。
-</p>
- 
-<ul>
-<li>ここは並列列挙リストです。つまり ul要素です。</li>
-<li>ここは並列列挙リストです。</li>
-<li>ここは並列列挙リストです。</li>
-<li>ここは並列列挙リストです。</li>
-<li>ここは並列列挙リストです。</li>
-</ul>
- 
-<h4>h4 見出し見出し見出し見出し</h4>
- 
-<p>
-このテキストはダミーテキストです。<q>インラインレベルの文章の引用</q> どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。<br />
-この部分は段落、つまり paragraph です。<br />
-このテキストはダミーテキストです。<strong>どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。</strong>この部分は段落、つまり paragraph です。このテキストはダミーテキストです。どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。この部分は段落、つまり paragraph です。
-</p>
- 
-<blockquote cite="">
-<p>
-ここは引用です。blockquote はこのように表示されます。ここは引用です。引用文はこのように表示されます。ここは引用です。引用文はこのように表示されます。
-</p>
-<p>
-このテキストはダミーテキストです。このテキストはダミーテキストです。
-</p>
+<hr />
+<pre>class F {
+	public static void main() {}
+}</pre>
+<blockquote>
+<p>blockquote タグ、引用です。</p>
+<address>address タグ、出展です。</address>
 </blockquote>
- 
-<p>
-このテキストはダミーテキストです。どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。この部分は段落、つまり paragraph です。このテキストはダミーテキストです。どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。この部分は段落、つまり paragraph です。
-</p>
- 
-<pre>pre
-#main ul li {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-}
-</pre>
- 
-<p>
-このテキストはダミーテキストです。どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。この部分は段落、つまり paragraph です。このテキストはダミーテキストです。どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。この部分は段落、つまり paragraph です。
-</p>
- 
+
+<ol>
+	<li>li item 1-1</li>
+	<li>li item 1-2
+		<ol>
+			<li>li item 2-1</li>
+			<li>li item 2-2
+				<ol>
+					<li>li item 3-1</li>
+					<li>li item 3-2
+						<ol>
+							<li>li item 4</li>
+						</ol>
+					</li>
+					<li>li item 3-3</li>
+				</ol>
+			</li>
+			<li>li item 2-3</li>
+		</ol>
+	</li>
+	<li>li item 1-3</li>
+</ol>
+
 <ul>
-<li><a href="#">リストにリンクがある場合です。</a></li>
-<li><a href="#">リストにリンクがある場合です。</a></li>
-<li><a href="#">リストにリンクがある場合です。</a></li>
-<li><a href="http://www.example.com/">ここは外部リンクです。</a></li>
+	<li>li item 1-1</li>
+	<li>li item 1-2
+		<ul>
+			<li>li item 2-1</li>
+			<li>li item 2-2
+				<ul>
+					<li>li item 3-1</li>
+					<li>li item 3-2
+						<ul>
+							<li>li item 4</li>
+						</ul>
+					</li>
+					<li>li item 3-3</li>
+				</ul>
+			</li>
+			<li>li item 2-3</li>
+		</ul>
+	</li>
+	<li>li item 1-3</li>
 </ul>
- 
-<h5>小見出しです。h5要素が使われてます。</h5>
- 
-<p>
-このテキストはダミーテキストです。どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。この部分は段落、つまり paragraph です。このテキストはダミーテキストです。どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。この部分は段落、つまり paragraph です。
-</p>
- 
-<h6>小見出しです。h6要素が使われてます。</h6>
- 
-<p>
-このテキストはダミーテキストです。どの要素にスタイルが当たっているか等が一通りチェック出来るような感じになっています。
-</p>
+
+<ol>
+	<li>li item 1-1</li>
+	<li>li item 1-2
+		<ul>
+			<li>li item 2-1</li>
+			<li>li item 2-2
+				<ol>
+					<li>li item 3-1</li>
+					<li>li item 3-2
+						<ul>
+							<li>li item 4</li>
+						</ul>
+					</li>
+					<li>li item 3-3</li>
+				</ol>
+			</li>
+			<li>li item 2-3</li>
+		</ul>
+	</li>
+	<li>li item 1-3</li>
+</ol>
+
+<ul>
+	<li>li item 1-1</li>
+	<li>li item 1-2
+		<ol>
+			<li>li item 2-1</li>
+			<li>li item 2-2
+				<ul>
+					<li>li item 3-1</li>
+					<li>li item 3-2
+						<ol>
+							<li>li item 4</li>
+						</ol>
+					</li>
+					<li>li item 3-3</li>
+				</ul>
+			</li>
+			<li>li item 2-3</li>
+		</ol>
+	</li>
+	<li>li item 1-3</li>
+</ul>
+
+<dl>
+	<dt>dt item</dt>
+	<dd>
+		dd item
+		<dl>
+			<dt>dt item</dt>
+			<dd>dd item
+				<dl>
+					<dt>dt item</dt>
+					<dd>dd item
+						<dl>
+							<dt>dt item</dt>
+							<dd>dd item</dd>
+						</dl>
+					</dd>
+				</dl>
+			</dd>
+		</dl>
+	</dd>
+</dl>
+
+<dl>
+	<dt>dt item</dt>
+	<dd>
+		dd item
+		<ul>
+			<li>li item</li>
+			<li>
+				<dl>
+					<dt>dt item</dt>
+					<dd>
+						<ol>
+							<li>li item</li>
+						</ol>
+					</dd>
+				</dl>
+			</li>
+			<li>li item</li>
+		</ul>
+	</dd>
+	<dt>dt item</dt>
+	<dd>
+		dd item
+		<ol>
+			<li>li item</li>
+			<li>
+				<dl>
+					<dt>dt item</dt>
+					<dd>
+						<ol>
+							<li>li item</li>
+						</ol>
+					</dd>
+				</dl>
+			</li>
+			<li>li item</li>
+		</ol>
+	</dd>
+</dl>
+
+<table>
+	<caption>caption tag</caption>
+	<thead>
+		<tr>
+			<th>thead th 1</th>
+			<th>thead th 2</th>
+			<th>thead th 3</th>
+			<th>thead th 4</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<th>tfoot th 1</th>
+			<th>tfoot th 2</th>
+			<th>tfoot th 3</th>
+			<th>tfoot th 4</th>
+		</tr>
+	</tfoot>
+	<tbody>
+		<tr>
+			<td>01</td>
+			<td colspan="2" rowspan="2">02,03<br />06,07</td>
+			<td>04</td>
+		</tr>
+		<tr>
+			<td>05</td>
+			<td rowspan="3">08,12,16</td>
+		</tr>
+		<tr>
+			<td colspan="3">09,10,11</td>
+		</tr>
+		<tr>
+			<td>13</td>
+			<td>14</td>
+			<td>15</td>
+		</tr>
+	</tbody>
+</table>
+
+<table border="0">
+	<caption>caption tag</caption>
+	<thead>
+		<tr>
+			<th>thead th 1</th>
+			<th>thead th 2</th>
+			<th>thead th 3</th>
+			<th>thead th 4</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<th>tfoot th 1</th>
+			<th>tfoot th 2</th>
+			<th>tfoot th 3</th>
+			<th>tfoot th 4</th>
+		</tr>
+	</tfoot>
+	<tbody>
+		<tr>
+			<td>01</td>
+			<td colspan="2" rowspan="2">02,03<br />06,07</td>
+			<td>04</td>
+		</tr>
+		<tr>
+			<td>05</td>
+			<td rowspan="3">08,12,16</td>
+		</tr>
+		<tr>
+			<td colspan="3">09,10,11</td>
+		</tr>
+		<tr>
+			<td>13</td>
+			<td>14</td>
+			<td>15</td>
+		</tr>
+	</tbody>
+</table>
+
+<table border="1">
+	<caption>caption tag</caption>
+	<thead>
+		<tr>
+			<th>thead th 1</th>
+			<th>thead th 2</th>
+			<th>thead th 3</th>
+			<th>thead th 4</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<th>tfoot th 1</th>
+			<th>tfoot th 2</th>
+			<th>tfoot th 3</th>
+			<th>tfoot th 4</th>
+		</tr>
+	</tfoot>
+	<tbody>
+		<tr>
+			<td>01</td>
+			<td colspan="2" rowspan="2">02,03<br />06,07</td>
+			<td>04</td>
+		</tr>
+		<tr>
+			<td>05</td>
+			<td rowspan="3">08,12,16</td>
+		</tr>
+		<tr>
+			<td colspan="3">09,10,11</td>
+		</tr>
+		<tr>
+			<td>13</td>
+			<td>14</td>
+			<td>15</td>
+		</tr>
+	</tbody>
+</table>
+
+<table border="2">
+	<caption>caption tag</caption>
+	<thead>
+		<tr>
+			<th>thead th 1</th>
+			<th>thead th 2</th>
+			<th>thead th 3</th>
+			<th>thead th 4</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<th>tfoot th 1</th>
+			<th>tfoot th 2</th>
+			<th>tfoot th 3</th>
+			<th>tfoot th 4</th>
+		</tr>
+	</tfoot>
+	<tbody>
+		<tr>
+			<td>01</td>
+			<td colspan="2" rowspan="2">02,03<br />06,07</td>
+			<td>04</td>
+		</tr>
+		<tr>
+			<td>05</td>
+			<td rowspan="3">08,12,16</td>
+		</tr>
+		<tr>
+			<td colspan="3">09,10,11</td>
+		</tr>
+		<tr>
+			<td>13</td>
+			<td>14</td>
+			<td>15</td>
+		</tr>
+	</tbody>
+</table>
+
+<table border="3">
+	<caption>caption tag</caption>
+	<thead>
+		<tr>
+			<th>thead th 1</th>
+			<th>thead th 2</th>
+			<th>thead th 3</th>
+			<th>thead th 4</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<th>tfoot th 1</th>
+			<th>tfoot th 2</th>
+			<th>tfoot th 3</th>
+			<th>tfoot th 4</th>
+		</tr>
+	</tfoot>
+	<tbody>
+		<tr>
+			<td>01</td>
+			<td colspan="2" rowspan="2">02,03<br />06,07</td>
+			<td>04</td>
+		</tr>
+		<tr>
+			<td>05</td>
+			<td rowspan="3">08,12,16</td>
+		</tr>
+		<tr>
+			<td colspan="3">09,10,11</td>
+		</tr>
+		<tr>
+			<td>13</td>
+			<td>14</td>
+			<td>15</td>
+		</tr>
+	</tbody>
+</table>
+
+<form action="#">
+
+<fieldset>
+	<legend>fieldset 1</legend>
+	<p><label>label: <input type="text" value="abc" /></label></p>
+	<p><label>label: <input type="password" value="abc" /></label></p>
+	<p><label>label: <input type="file" /></label></p>
+	<p>
+		<label><input type="checkbox" /> label1</label>
+		<label><input type="checkbox" /> label2</label>
+		<label><input type="checkbox" /> label3</label>
+		<label><input type="checkbox" /> label4</label>
+	</p>
+	<p>
+		<label><input type="radio" /> label1</label>
+		<label><input type="radio" /> label2</label>
+		<label><input type="radio" /> label3</label>
+		<label><input type="radio" /> label4</label>
+	</p>
+</fieldset>
+
+<fieldset>
+	<legend>fieldset 2</legend>
+	<p class="hchk">
+		<button type="button">button</button>
+		<button type="reset">reset</button>
+		<button type="submit">submit</button>
+		<input type="button" value="button" />
+		<input type="reset" value="reset" />
+		<input type="submit" value="submit" />
+	</p>
+	<p>
+		<button type="button">button</button>
+		<button type="button" disabled="disabled">button</button>
+		<input type="button" value="button" />
+		<input type="button" value="button" disabled="disabled" />
+	</p>
+	<p class="hchk">
+		<input type="text" value="query" />
+		<button type="submit">submit</button>
+	</p>
+	<p class="hchk">
+		<input type="text" value="query" />
+		<input type="submit" value="submit" />
+	</p>
+</fieldset>
+
+<fieldset>
+	<legend>fieldset 3</legend>
+	<p>
+		<select size="3">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+		</select>
+		<select size="3">
+			<optgroup label="a">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</optgroup>
+			<optgroup label="b">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</optgroup>
+			<optgroup label="c">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</optgroup>
+		</select>
+	</p>
+	<p>
+		<select size="2">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+		</select>
+		<select size="2">
+			<optgroup label="a">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</optgroup>
+			<optgroup label="b">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</optgroup>
+			<optgroup label="c">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</optgroup>
+		</select>
+	</p>
+	<p>
+		<select>
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+		</select>
+		<select>
+			<optgroup label="a">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</optgroup>
+			<optgroup label="b">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</optgroup>
+			<optgroup label="c">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</optgroup>
+		</select>
+	</p>
+	<p class="hchk">
+		<label>
+			label
+			<select>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</select>
+		</label>
+	</p>
+	<p class="hchk">
+		<label>
+			<input type="text" />
+			<select>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</select>
+		</label>
+	</p>
+	<p class="hchk">
+		<label>
+			<select>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</select>
+			<button>button</button>
+		</label>
+	</p>
+	<p class="hchk">
+		<label>
+			<select>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</select>
+			<input type="button" value="button" />
+		</label>
+	</p>
+	<p>
+		<label>label<br /><textarea cols="30" rows="10">aa bb cc</textarea></label>
+	</p>
+</fieldset>
+
+</form>
 
 </body>
 </html>
