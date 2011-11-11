@@ -27,7 +27,9 @@
 	bm-html5(mark ruby rt rp)
 	span ins del img
 	iframe embed object
-	video canvas
+	video
+	bm-html5(audio)
+	canvas
 	caption tbody thead tfoot tr
 	form fieldset legend label
 	bm-html5(details summary command menu)
@@ -58,6 +60,7 @@ table, td, th {
 
 html {
 	// display: block; // IE: inline;
+	@include text-size-adjust(100%);
 }
 
 
@@ -296,6 +299,16 @@ del {}
 //= Embedded content
 //------------------------------------------------------------------------------
 
+#{bm-selectors(
+	video
+	bm-html5(audio)
+	canvas
+)} {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+
 img {}
 
 iframe {}
@@ -310,6 +323,9 @@ video {}
 
 @if $support-for-html5 {
 	// audio {}
+	audio:not([controls]) {
+		display: none;
+	}
 }
 
 @if $support-for-html5 {
@@ -426,10 +442,11 @@ button {
 }
 
 select {
+	padding: initial;
 	// box-sizing: border-box;
 	// font-size: 99%;
 	// line-height: normal;
-	// vertical-align: bottom; // Fxでinputとずれるのを正す。
+	vertical-align: bottom; // Fxでinputとずれるのを正す。
 }
 
 @if $support-for-html5 {
@@ -443,7 +460,8 @@ option {}
 textarea {
 	// box-sizing: border-box;
 	// font-size: 99%;
-	// vertical-align: bottom; // 下に隙間ができるのを防ぐ。
+	overflow: auto;
+	vertical-align: top;
 }
 
 @if $support-for-html5 {
@@ -465,22 +483,25 @@ textarea {
 input, button, select, textarea {
 	@include box-sizing(border-box);
 	font-size: 99%;
+	line-height: normal;
+	*vertical-align: middle;
 }
 
 input, button, select {
 	line-height: normal;
 }
 
-select, textarea {
-	vertical-align: bottom;
+input, button {
+	// Firefoxでinput[type=text]との高さを合わせる。
+	&::-moz-focus-inner {
+		padding: 0;
+		border: 0 none;
+	}
 }
 
 #{$buttons} {
-	// Firefoxでinput[type=text]との高さを合わせる。
-	&::-moz-focus-inner {
-		padding: 1px 0;
-		border: 0 none;
-	}
+	cursor: hand;
+	cursor: pointer;
 }
 
 // IE6,7でボタンの左右のpaddingが幅によって変化するのを止める。

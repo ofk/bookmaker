@@ -112,49 +112,6 @@ table[border] {
 //= Forms
 //------------------------------------------------------------------------------
 
-input, button, select, textarea {
-	color: $base-color;
-}
-
-#{$inputs}, select {
-	padding: .25em .4em;
-	border: 1px solid lighten($base-color, 60%);
-	background-color: #fff;
-}
-
-$select-multiple: bm-selectors('select[multiple]' 'select[size]:not([size="1"])');
-$select-single: bm-selectors('select:not([multiple]):not([size])' 'select[size="1"]');
-
-// IE
-select {
-	padding: .15em .4em\9; // IE8でのずれを修正
-}
-
-// Opera
-#{$select-multiple} {
-	padding-left: 0;
-}
-
-// Firefox
-#{$select-multiple}, x:-moz-any-link {
-	padding-left: .4em;
-}
-#{$select-single}, x:-moz-any-link {
-	padding: 0;
-	height: #{($base-line-height + 0.5 - 0.15) + 'em'};
-}
-
-// WebKit
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-#{$select-multiple} {
-	padding-left: .4em;
-}
-#{$select-single} {
-	padding: 0;
-	height: #{($base-line-height + 0.5 - 0.25) + 'em'};
-}
-}
-
 @mixin bm-button($color, $border-color: false) {
 	@if $border-color == false {
 		$border-color: lighten($color, 60%);
@@ -164,20 +121,14 @@ select {
 	@include border-radius(.25em);
 	@include top-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .12), '#00000000', '#1e000000');
 	color: lighten($color, 20%);
-	 // IE7でのずれを修正
+	// IE7でのずれを修正
 	*padding: .05em .6em;
 	*width: auto;
 	*overflow: visible;
-	// Firefoxでinput[type=text]との高さを合わせる。
-	&::-moz-focus-inner {
-		padding: 0;
-	}
 	&:hover {
 		border-color: darken($border-color, 6.6%);
 		@include top-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .08), '#00000000', '#14000000');
 		color: $color;
-		cursor: hand;
-		cursor: pointer;
 		@include box-shadow(0 .15em .3em 0 rgba(0, 0, 0, .1));
 	}
 	&:active {
@@ -193,6 +144,16 @@ select {
 	} }
 }
 
+input, button, select, textarea {
+	color: $base-color;
+}
+
+#{$inputs}, select {
+	padding: .25em .4em;
+	border: 1px solid lighten($base-color, 60%);
+	background-color: #fff;
+}
+
 #{$inputs}, select, #{$buttons} {
 	&:focus {
 		border-color: #48f;
@@ -203,6 +164,56 @@ select {
 #{$buttons} {
 	@include bm-button($base-color);
 	background-color: #fff;
+}
+
+$select-multiple: bm-selectors('select[multiple]' 'select[size]:not([size="1"])');
+$select-single: bm-selectors('select:not([multiple]):not([size])' 'select[size="1"]');
+
+select {
+	padding: .15em; // for IE
+}
+
+// Firefox
+#{$select-single}, x:-moz-any-link {
+	padding: 0;
+	height: #{($base-line-height + 0.35) + 'em'};
+}
+
+// WebKit
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	#{$select-single} {
+		padding: 0;
+		height: #{($base-line-height + 0.25) + 'em'};
+	}
+}
+
+
+
+
+
+
+
+
+/*
+
+// IE
+select {
+	padding: .15em .4em\9; // IE8でのずれを修正
+}
+
+// Opera
+#{$select-multiple} {
+	padding-left: 0;
+}
+
+// Firefox
+#{$select-multiple}, x:-moz-any-link {
+	padding-left: .4em;
+}
+
+// WebKit
+#{$select-multiple} {
+	padding-left: .4em;
 }
 
 
@@ -223,3 +234,4 @@ b { @extend strong; }
 
 
 //------------------------------------------------------------------------------
+//*/

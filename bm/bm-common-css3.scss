@@ -399,6 +399,15 @@ $image-rendering-default: auto !default;
 	}
 }
 
+// text-size-adjust
+$text-size-adjust-default: auto !default;
+@mixin text-size-adjust($value: $text-size-adjust-default) {
+	@if type-of($value) == string { $value: unquote($value); }
+	@include bm-x-prop(
+		text-size-adjust, $value,
+		not -moz, -webkit, not -o, -ms, not official
+	);
+}
 
 //------------------------------------------------------------------------------
 // ms-filter
