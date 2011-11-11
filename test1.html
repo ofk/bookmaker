@@ -2,26 +2,43 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8" />
-<title>CSS TEST 1</title>
-<link rel="stylesheet" href="bookmaker.css" media="all" />
-<style>
-.hchk {
-	background: #fc0;
-	border: 1px solid #0cf;
-}
-</style>
+<title>Bookmaker.css TEST</title>
+<link rel="stylesheet" href="bm-all.css" media="all" />
 </head>
 <body>
+<!--
+<h1>Bookmaker.css</h1>
 
-<h1>h1 ヘッダー</h1>
-<h2>h2 ヘッダー</h2>
-<h3>h3 ヘッダー</h3>
-<h4>h4 ヘッダー</h4>
-<h5>h5 ヘッダー</h5>
-<h6>h6 ヘッダー</h6>
+<h2>Bookmakerについて</h2>
 
-<address>address タグです。</address>
-<p>p タグ、本文です。本文ですよ。</p>
+<h2>タイポグラフィ</h2>
+
+<h3>ヘッダー</h3>
+
+<div>
+	<h1>h1. Heading 1</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	<h2>h2. Heading 2</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	<h3>h3. Heading 3</h3>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	<h4>h4. Heading 4</h4>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	<h5>h5. Heading 5</h5>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	<h6>h6. Heading 6</h6>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</div>
+
+<h3>引用文</h3>
+
+<blockquote>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	<address>Dr. Julius Hibbert</address>
+</blockquote>
+
+<h3>インライン</h3>
+
 <p>
 	<a href="#">a tag</a>
 	<em>em tag</em>
@@ -42,8 +59,6 @@
 	<ins>ins tag</ins>
 	<del>del tag</del>
 </p>
-<ins><p>p タグ、本文です。本文ですよ。</p></ins>
-<del><p>p タグ、本文です。本文ですよ。</p></del>
 <p>p タグ、本文です。<img src="http://dummyimage.com/13x13" />本文ですよ。</p>
 <p>
 	<img src="http://dummyimage.com/300x200" align="left" />
@@ -52,14 +67,13 @@
 	画像に本文が回りこむ、<br />回りこむ、<br />回りこむ、<br />回りこむ、<br />回りこむ！
 	<br clear="all" />
 </p>
-<hr />
-<pre>class F {
-	public static void main() {}
-}</pre>
-<blockquote>
-<p>blockquote タグ、引用です。</p>
-<address>address タグ、出展です。</address>
-</blockquote>
+
+<h3>追加・削除</h3>
+
+<ins><p>p タグ、本文です。本文ですよ。</p></ins>
+<del><p>p タグ、本文です。本文ですよ。</p></del>
+
+<h3>リスト</h3>
 
 <ol>
 	<li>li item 1-1</li>
@@ -208,6 +222,25 @@
 		</ol>
 	</dd>
 </dl>
+
+<h3>コード</h3>
+
+<pre>// Hello.java
+import javax.swing.*;
+
+public class Hello extends JFrame {
+    Hello() {
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        add(new JLabel("Hello, world!"));
+        pack();
+    }
+
+    public static void main(String[] args) {
+        new Hello().setVisible(true);
+    }
+}</pre>
+
+<h3>テーブル</h3>
 
 <table>
 	<caption>caption tag</caption>
@@ -404,6 +437,8 @@
 	</tbody>
 </table>
 
+<h3>フォーム</h3>
+-->
 <form action="#">
 
 <fieldset>
@@ -411,23 +446,25 @@
 	<p><label>label: <input type="text" value="abc" /></label></p>
 	<p><label>label: <input type="password" value="abc" /></label></p>
 	<p><label>label: <input type="file" /></label></p>
+	<p><label>label: <input type="text" value="abc" disabled="disabled" /></label></p>
+	<p><label>label: <input type="password" value="abc" disabled="disabled" /></label></p>
 	<p>
 		<label><input type="checkbox" /> label1</label>
 		<label><input type="checkbox" /> label2</label>
-		<label><input type="checkbox" /> label3</label>
-		<label><input type="checkbox" /> label4</label>
+		<label><input type="checkbox" disabled="disabled" /> label3</label>
+		<label><input type="checkbox" disabled="disabled" /> label4</label>
 	</p>
 	<p>
 		<label><input type="radio" /> label1</label>
 		<label><input type="radio" /> label2</label>
-		<label><input type="radio" /> label3</label>
-		<label><input type="radio" /> label4</label>
+		<label><input type="radio" disabled="disabled" /> label3</label>
+		<label><input type="radio" disabled="disabled" /> label4</label>
 	</p>
 </fieldset>
 
 <fieldset>
 	<legend>fieldset 2</legend>
-	<p class="hchk">
+	<p>
 		<button type="button">button</button>
 		<button type="reset">reset</button>
 		<button type="submit">submit</button>
@@ -441,11 +478,11 @@
 		<input type="button" value="button" />
 		<input type="button" value="button" disabled="disabled" />
 	</p>
-	<p class="hchk">
+	<p>
 		<input type="text" value="query" />
 		<button type="submit">submit</button>
 	</p>
-	<p class="hchk">
+	<p>
 		<input type="text" value="query" />
 		<input type="submit" value="submit" />
 	</p>
@@ -455,14 +492,14 @@
 	<legend>fieldset 3</legend>
 	<p>
 		<select size="3">
-			<option>1</option>
+			<option>111111111111111111111</option>
 			<option>2</option>
 			<option>3</option>
 			<option>4</option>
 		</select>
 		<select size="3">
 			<optgroup label="a">
-				<option>1</option>
+				<option>111111111111111111111</option>
 				<option>2</option>
 				<option>3</option>
 				<option>4</option>
@@ -537,7 +574,7 @@
 			</optgroup>
 		</select>
 	</p>
-	<p class="hchk">
+	<p>
 		<label>
 			label
 			<select>
@@ -548,7 +585,7 @@
 			</select>
 		</label>
 	</p>
-	<p class="hchk">
+	<p>
 		<label>
 			<input type="text" />
 			<select>
@@ -559,7 +596,7 @@
 			</select>
 		</label>
 	</p>
-	<p class="hchk">
+	<p>
 		<label>
 			<select>
 				<option>1</option>
@@ -570,7 +607,7 @@
 			<button>button</button>
 		</label>
 	</p>
-	<p class="hchk">
+	<p>
 		<label>
 			<select>
 				<option>1</option>

@@ -2,10 +2,24 @@
  * bm-design.css
  *
  * Author: ofk
- * Version: 2011-10-20
+ * Version: 2011-11-10
  *----------------------------------------------------------------------------*/
 
 @import 'bm-common';
+
+
+//------------------------------------------------------------------------------
+//= Colors
+//------------------------------------------------------------------------------
+
+$base-color:   #333 !default;
+$base-bgcolor: #fff !default;
+
+$base-link-color:    #12c !default;
+$base-visited-color: #61c !default;
+$base-active-color:  #c43 !default;
+
+$base-mark-bgcolor:  #ff9 !default;
 
 
 //------------------------------------------------------------------------------
@@ -29,16 +43,16 @@ body {
 //------------------------------------------------------------------------------
 
 :link {
-	color: #12c;
-	-webkit-tap-highlight-color: #c43;
+	color: $base-link-color;
+	-webkit-tap-highlight-color: $base-active-color;
 }
 
 :visited {
-	color:#61c;
+	color:$base-visited-color;
 }
 
 :link, :visited { &:hover, &:active {
-	color:#c43;
+	color:$base-active-color;
 } }
 
 abbr, dfn { &[title] {
@@ -47,7 +61,7 @@ abbr, dfn { &[title] {
 
 @if $support-for-html5 {
 	mark {
-		background-color: #ff9;
+		background-color: $base-mark-bgcolor;
 		color: darken($base-color, 20%);
 	}
 }
@@ -79,18 +93,18 @@ iframe { background-color: $base-bgcolor; }
 //= Tabular data
 //------------------------------------------------------------------------------
 
-@mixin bm-design-table {
+@mixin -bm-design-table {
 	&, td, th {
 		border-color: lighten($base-color, 60%);
 	}
 }
 
 table[border] {
-	@include bm-design-table;
+	@include -bm-design-table;
 }
 
 * html table {
-	@include bm-design-table;
+	@include -bm-design-table;
 }
 
 
@@ -108,7 +122,40 @@ input, button, select, textarea {
 	background-color: #fff;
 }
 
-@mixin bm-button-style($color, $border-color: false) {
+$select-multiple: bm-selectors('select[multiple]' 'select[size]:not([size="1"])');
+$select-single: bm-selectors('select:not([multiple]):not([size])' 'select[size="1"]');
+
+// IE
+select {
+	padding: .15em .4em\9; // IE8でのずれを修正
+}
+
+// Opera
+#{$select-multiple} {
+	padding-left: 0;
+}
+
+// Firefox
+#{$select-multiple}, x:-moz-any-link {
+	padding-left: .4em;
+}
+#{$select-single}, x:-moz-any-link {
+	padding: 0;
+	height: #{($base-line-height + 0.5 - 0.15) + 'em'};
+}
+
+// WebKit
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+#{$select-multiple} {
+	padding-left: .4em;
+}
+#{$select-single} {
+	padding: 0;
+	height: #{($base-line-height + 0.5 - 0.25) + 'em'};
+}
+}
+
+@mixin bm-button($color, $border-color: false) {
 	@if $border-color == false {
 		$border-color: lighten($color, 60%);
 	}
@@ -117,6 +164,10 @@ input, button, select, textarea {
 	@include border-radius(.25em);
 	@include top-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .12), '#00000000', '#1e000000');
 	color: lighten($color, 20%);
+	 // IE7でのずれを修正
+	*padding: .05em .6em;
+	*width: auto;
+	*overflow: visible;
 	// Firefoxでinput[type=text]との高さを合わせる。
 	&::-moz-focus-inner {
 		padding: 0;
@@ -150,7 +201,7 @@ input, button, select, textarea {
 }
 
 #{$buttons} {
-	@include bm-button-style($base-color);
+	@include bm-button($base-color);
 	background-color: #fff;
 }
 

@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 // bm-common-css3.scss
 // Author: ofk
-// Version: 2011-10-20
+// Version: 2011-11-10
 //------------------------------------------------------------------------------
 
 @import 'bm-common-std';
@@ -382,6 +382,23 @@ $box-sizing-default: content-box !default;
 
 // binding
 
+// image-rendering
+$image-rendering-default: auto !default;
+@mixin image-rendering($value: $image-rendering-default) {
+	@if type-of($value) == string { $value: unquote($value); }
+	@if $value == optimizeQuality {
+		-ms-interpolation-mode: bicubic;
+		image-rendering: $value;
+	}
+	@else if $value == optimizeSpeed {
+		-ms-interpolation-mode: nearest-neighbor;
+		image-rendering: $value;
+	}
+	@else {
+		image-rendering: $value;
+	}
+}
+
 
 //------------------------------------------------------------------------------
 // ms-filter
@@ -391,5 +408,6 @@ $ms-filter-default: none !default;
 	-ms-filter: quote($value);
 	filter: $value;
 }
+
 
 //------------------------------------------------------------------------------

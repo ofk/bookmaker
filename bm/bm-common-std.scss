@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 // bm-common-css3.scss
 // Author: ofk
-// Version: 2011-10-20
+// Version: 2011-11-10
 //------------------------------------------------------------------------------
 
 @import 'bm-config';
@@ -37,13 +37,16 @@
 
 // ヘッダーノードの集合
 $headers: bm-selectors(h1 h2 h3 h4 h5 h6);
+
 // ボタンノードの集合
 $buttons: bm-selectors('input[type="submit"]' 'input[type="button"]' 'input[type="reset"]' button);
+
 // テキスト入力の集合
-$inputs: bm-selectors('input[type="text"]' 'input[type="password"]' textarea);
 // input:not([type='checkbox']):not([type='radio']):not([type='file'])
 //      :not([type='submit']):not([type='image']):not([type='reset'])
 //      :not([type='button'])
+$inputs: bm-selectors('input[type="text"]' 'input[type="password"]' textarea);
+
 
 //------------------------------------------------------------------------------
 
@@ -85,16 +88,48 @@ $inputs: bm-selectors('input[type="text"]' 'input[type="password"]' textarea);
 	@if $official                       { #{$property}:              $value; }
 }
 
+
 //------------------------------------------------------------------------------
 
 // YUI font size
-@function bm-size($size, $basesize: $base-font-size-px) {
-	@if $basesize == 13 and 10 <= $size and $size <= 26 {
-		$sizes: ( 77%,    85%,    93%,   100%,
-		         108%,   116%,   123.1%, 131%,
-		         138.5%, 146.5%, 153.9%, 161.6%,
-		         167%,   174%,   182%,   189%,   197%);
-		@return nth($sizes, $size - 9);
+@function bm-size($size-px, $base-size-px: $base-font-size-px) {
+	@if $base-size-px == 13 and 10 <= $size-px and $size-px <= 26 {
+		$size-pxes: ( 77%,    85%,    93%,    100%,
+		              108%,   116%,   123.1%, 131%,
+		              138.5%, 146.5%, 153.9%, 161.6%,
+		              167%,   174%,   182%,   189%,   197%);
+		@return nth($size-pxes, $size-px - 9);
 	}
-	@return percentage($size / $basesize);
+	@return percentage($size-px / $base-size-px);
 }
+
+// YUI font size for IE
+@mixin bm-legacy-size($size-px) {
+	@if $size-px == 10 {
+		*font-size: x-small;
+		*font: xx-small;
+	}
+	@else if $size-px == 13 {
+		*font-size: small;
+		*font: x-small;
+	}
+	@else if $size-px == 16 {
+		*font-size: medium;
+		*font: small;
+	}
+	@else if $size-px == 18 {
+		*font-size: large;
+		*font: medium;
+	}
+	@else if $size-px == 24 {
+		*font-size: x-large;
+		*font: large;
+	}
+	@else if $size-px == 32 {
+		*font-size: xx-large;
+		*font: x-large;
+	}
+}
+
+
+//------------------------------------------------------------------------------

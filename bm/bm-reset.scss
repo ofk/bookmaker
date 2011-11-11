@@ -2,7 +2,7 @@
  * bm-reset.css
  *
  * Author: ofk
- * Version: 2011-10-20
+ * Version: 2011-11-10
  *----------------------------------------------------------------------------*/
 
 @import 'bm-common';
@@ -91,30 +91,7 @@ body {
 	// margin: 0;
 	font: #{$base-font-size-px}px/#{$base-line-height} sans-serif;
 	// IE6以下でpx指定の文字サイズが変更できない。
-	@if $base-font-size-px == 10 {
-		*font-size: x-small;
-		*font: xx-small;
-	}
-	@else if $base-font-size-px == 13 {
-		*font-size: small;
-		*font: x-small;
-	}
-	@else if $base-font-size-px == 16 {
-		*font-size: medium;
-		*font: small;
-	}
-	@else if $base-font-size-px == 18 {
-		*font-size: large;
-		*font: medium;
-	}
-	@else if $base-font-size-px == 24 {
-		*font-size: x-large;
-		*font: large;
-	}
-	@else if $base-font-size-px == 32 {
-		*font-size: xx-large;
-		*font: x-large;
-	}
+	@include bm-legacy-size($base-font-size-px);
 }
 
 @if $support-for-html5 {
@@ -362,7 +339,7 @@ table {
 	border-spacing: 0;
 }
 
-@mixin bm-reset-table {
+@mixin -bm-reset-table {
 	&, th, td {
 		border-style: solid;
 	}
@@ -371,7 +348,7 @@ table {
 table[border] {
 	// Firefoxでtableがborder-styleがoutset。
 	// それ以外でも、solidを保障する。
-	@include bm-reset-table;
+	@include -bm-reset-table;
 }
 
 table[border="0"] {
@@ -384,7 +361,7 @@ table[border="0"] {
 * html table {
 	// IE6は属性セレクタをサポートしていないため、線が引かれないため。
 	// border指定無し、border=0で線が引かれるデメリットがある。
-	@include bm-reset-table;
+	@include -bm-reset-table;
 }
 
 caption {}
@@ -452,6 +429,7 @@ select {
 	// box-sizing: border-box;
 	// font-size: 99%;
 	// line-height: normal;
+	// vertical-align: bottom; // Fxでinputとずれるのを正す。
 }
 
 @if $support-for-html5 {
@@ -465,6 +443,7 @@ option {}
 textarea {
 	// box-sizing: border-box;
 	// font-size: 99%;
+	// vertical-align: bottom; // 下に隙間ができるのを防ぐ。
 }
 
 @if $support-for-html5 {
@@ -490,6 +469,10 @@ input, button, select, textarea {
 
 input, button, select {
 	line-height: normal;
+}
+
+select, textarea {
+	vertical-align: bottom;
 }
 
 #{$buttons} {

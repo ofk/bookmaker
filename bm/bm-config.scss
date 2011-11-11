@@ -1,16 +1,12 @@
 //------------------------------------------------------------------------------
 // bm-config.scss
 // Author: ofk
-// Version: 2011-10-20
+// Version: 2011-11-10
 //------------------------------------------------------------------------------
 
 // base font size
 $base-font-size-px:  13    !default;
 $base-line-height:   1.5   !default;
-
-// base color
-$base-color:         #333  !default;
-$base-bgcolor:       #fff  !default;
 
 // support general
 $support-for-html5:  false !default;
@@ -21,5 +17,6 @@ $support-for-moz:    true  !default;
 $support-for-webkit: true  !default;
 $support-for-o:      true  !default;
 $support-for-ms:     true  !default;
+
 
 //------------------------------------------------------------------------------

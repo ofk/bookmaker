@@ -2,7 +2,7 @@
  * bm-layout.css
  *
  * Author: ofk
- * Version: 2011-10-20
+ * Version: 2011-11-10
  *----------------------------------------------------------------------------*/
 
 @import 'bm-common';
@@ -146,7 +146,7 @@ ins {
 }
 
 img {
-	-ms-interpolation-mode: bicubic;
+	@include image-rendering(optimizeQuality);
 }
 
 
@@ -158,19 +158,19 @@ th {
 	font-weight: bolder;
 }
 
-@mixin bm-layout-table {
+@mixin -bm-layout-table {
 	th, td {
 		padding: .2em .5em;
 	}
 }
 
 table[border] {
-	@include bm-layout-table;
+	@include -bm-layout-table;
 }
 
 * html table {
 	// IE6
-	@include bm-layout-table;
+	@include -bm-layout-table;
 }
 
 
