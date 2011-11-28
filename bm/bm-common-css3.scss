@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 // bm-common-css3.scss
 // Author: ofk
-// Version: 2011-11-10
+// Version: 2011-11-29
 //------------------------------------------------------------------------------
 
 @import 'bm-common-std';
@@ -172,8 +172,8 @@ $opacity-default: 1 !default;
 
 
 //------------------------------------------------------------------------------
-// simple-linear-gradient
-@mixin simple-linear-gradient($dir, $start-color, $finish-color, $start-color-alt: false, $finish-color-alt: false) {
+// single-linear-gradient
+@mixin single-linear-gradient($dir, $start-color, $finish-color) {
 	@if type-of($dir) == string { $dir: unquote($dir); }
 	@if type-of($start-color) == string { $start-color: unquote($start-color); }
 	@if type-of($finish-color) == string { $finish-color: unquote($finish-color); }
@@ -187,28 +187,38 @@ $opacity-default: 1 !default;
 	@else if $dir == left { $dir-finish-x: right; }
 	@else if $dir == right { $dir-top-x: right; }
 
+	background-image: -webkit-gradient(linear,$dir-start-x $dir-start-y,$dir-finish-x $dir-finish-y,from($start-color),to($finish-color));
 	background-image: -moz-linear-gradient($dir,$start-color,$finish-color);
-	background-image: -webkit-gradient(linear,$dir-start-x $dir-start-y,$dir-finish-x $dir-finish-y,color-stop(0,$start-color),color-stop(1,$finish-color));
 	background-image: -webkit-linear-gradient($dir,$start-color,$finish-color);
+	background-image: -o-linear-gradient($dir,$start-color,$finish-color);
+	background-image: -ms-linear-gradient($dir,$start-color,$finish-color);
 	background-image: linear-gradient($dir,$start-color,$finish-color);
-
-	@if $start-color-alt == false {
-		$start-color-alt: rgb(red($start-color), green($start-color), blue($start-color));
-	}
-	@if $finish-color-alt == false {
-		$finish-color-alt: rgb(red($finish-color), green($finish-color), blue($finish-color));
-	}
-	@include ms-filter('progid:DXImageTransform.Microsoft.Gradient(StartColorStr="#{$start-color-alt}",EndColorStr="#{$finish-color-alt}")');
 }
 
-// top-linear-gradient
-@mixin top-linear-gradient($start-color, $finish-color, $start-color-alt: false, $finish-color-alt: false) {
-	@include simple-linear-gradient(top, $start-color, $finish-color, $start-color-alt, $finish-color-alt);
-}
+@mixin filter-linear-gradient($dir, $start-color, $finish-color) {
+	@if type-of($dir) == string { $dir: unquote($dir); }
+	$dir-type: 0;
 
-// left-linear-gradient
-@mixin left-linear-gradient($start-color, $finish-color, $start-color-alt: false, $finish-color-alt: false) {
-	@include simple-linear-gradient(left, $start-color, $finish-color, $start-color-alt, $finish-color-alt);
+	@if      $dir == top {  }
+	@else if $dir == bottom {
+		$tmp-color: $start-color;
+		$start-color: $finish-color;
+		$finish-color: $tmp-color;
+	}
+	@else if $dir == left { $dir-type: 1; }
+	@else if $dir == right {
+		$dir-type: 1;
+		$tmp-color: $start-color;
+		$start-color: $finish-color;
+		$finish-color: $tmp-color;
+	}
+
+	@if $dir-type == 0 {
+		@include ms-filter('progid:DXImageTransform.Microsoft.Gradient(StartColorStr="#{$start-color}",EndColorStr="#{$finish-color}")');
+	}
+	@else {
+		@include ms-filter('progid:DXImageTransform.Microsoft.Gradient(GradientType=1,StartColorStr="#{$start-color}",EndColorStr="#{$finish-color}")');
+	}
 }
 
 // linear-gradient(left, (#ff0000, rgba(255,0,0,0)))
@@ -382,6 +392,7 @@ $box-sizing-default: content-box !default;
 
 // binding
 
+//------------------------------------------------------------------------------
 // image-rendering
 $image-rendering-default: auto !default;
 @mixin image-rendering($value: $image-rendering-default) {
@@ -408,6 +419,7 @@ $text-size-adjust-default: auto !default;
 		not -moz, -webkit, not -o, -ms, not official
 	);
 }
+
 
 //------------------------------------------------------------------------------
 // ms-filter
